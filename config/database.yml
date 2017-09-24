@@ -1,0 +1,21 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: root
+  password: hanhdong
+  socket: /var/run/mysqld/mysqld.sock
+
+development:
+  <<: *default
+  database: devcamp_portfolio_development
+
+test:
+  <<: *default
+  database: devcamp_portfolio_test
+
+production:
+  <<: *default
+  database: devcamp_portfolio_production
+  username: devcamp_portfolio
+  password: <%= ENV['DEVCAMP_PORTFOLIO_DATABASE_PASSWORD'] %>
