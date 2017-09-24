@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require 'faker'
+
+Blog.destroy_all
+5.times do
+  blog = Blog.new
+  blog.title = Faker::LeagueOfLegends.quote
+  blog.body = Faker::Lorem.paragraph
+  blog.save!
+end

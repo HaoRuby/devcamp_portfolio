@@ -17,6 +17,7 @@ gem 'turbolinks', '~> 5'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'faker', git: 'git://github.com/stympy/faker.git', branch: 'master'
 end
 
 group :development do
