@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   get 'about-us', to: 'pages#about'
   get 'contact-us', to: 'pages#contact'
 
-  resources :blogs
+  resources :blogs do
+    member do
+      get :toggle_status
+    end
+  end
 
   root to: 'pages#home'
 end
