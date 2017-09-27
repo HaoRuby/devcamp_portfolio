@@ -2,6 +2,11 @@
 <span><%= @portfolio.subtitle %></span><br>
 <p><%= @portfolio.body %></p>
 <%= image_tag @portfolio.main_image unless @portfolio.main_image.nil? %>
+<ul>
+  <% @portfolio.technologies.each do |tech| %>
+    <li><%= tech.name %></li>
+  <% end  %>
+</ul>
 <%= link_to 'Back', portfolios_path %>
 <%= link_to 'Edit', edit_portfolio_path(@portfolio) %>
 <%= link_to 'Delete', @portfolio, method: :delete, data: { confirm: 'Are you sure?' } %>
