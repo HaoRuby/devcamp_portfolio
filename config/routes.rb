@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :portfolios
+  get 'angular-items', to: 'portfolios#angular'
   # if you want to custom resources routes
   # resources :portfolios, except: [:show]
   # get 'portfolio/:id', to: 'portfolios#show', as: 'portfolio_show'
