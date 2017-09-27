@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170927012903) do
+ActiveRecord::Schema.define(version: 20170927032736) do
 
   create_table "blogs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
@@ -51,6 +51,15 @@ ActiveRecord::Schema.define(version: 20170927012903) do
     t.integer "percent_completed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "badge"
+  end
+
+  create_table "technologies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.bigint "portfolio_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["portfolio_id"], name: "index_technologies_on_portfolio_id"
   end
 
   create_table "topics", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -59,5 +68,5 @@ ActiveRecord::Schema.define(version: 20170927012903) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "blogs", "topics"
+  add_foreign_key "technologies", "portfolios"
 end
