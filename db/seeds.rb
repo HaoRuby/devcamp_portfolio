@@ -1,10 +1,18 @@
 require 'faker'
 
+Topic.destroy_all
+5.times do |t|
+  topic = Topic.new
+  topic.title = "Topic #{t}"
+  topic.save!
+end
+
 Blog.destroy_all
 10.times do |t|
   blog = Blog.new
   blog.title = "My blog #{t}"
   blog.body = Faker::Lorem.paragraph
+  blog.topic_id = Faker::Number.between(1, 4)
   blog.save!
 end
 
