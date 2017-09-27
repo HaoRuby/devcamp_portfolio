@@ -4,4 +4,6 @@ class Blog < ApplicationRecord
   # use friendly_id: show title in url instead of id
   extend FriendlyId
   friendly_id :title, use: :slugged
+  # validation
+  validates_presence_of :title, :body
 end
