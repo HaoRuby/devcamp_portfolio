@@ -5,8 +5,14 @@ class PortfoliosController < ApplicationController
     @portfolios = Portfolio.all
   end
 
+  def angular
+    @angular_portfolio_items = Portfolio.angular
+  end
+
   def new
     @portfolio = Portfolio.new
+    # create techonology instant
+    3.times { @portfolio.technologies.build }
   end
 
   def create
@@ -15,10 +21,8 @@ class PortfoliosController < ApplicationController
     respond_to do |format|
       if @portfolio.save
         format.html { redirect_to portfolios_path, notice: 'Portfolio was successfully created.' }
-        format.json { render :show, status: :created, location: @portfolio }
       else
-        format.html { render :new }
-        format.json { render json: @portfolio.errors, status: :unprocessable_entity }
+        format.html { redirect_to new_portfolio_url, notice: 'Try again' }
       end
     end
   end
@@ -54,6 +58,9 @@ class PortfoliosController < ApplicationController
   end
 
   def portfolio_params
-    params.require(:portfolio).permit(:title, :subtitle, :body)
+    params.require(:portfolio).permit(:title,
+                                      :subtitle,
+                                      :body,
+                                      technologies_attributes: [:name])
   end
 end

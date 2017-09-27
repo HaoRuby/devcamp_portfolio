@@ -1,10 +1,18 @@
 require 'faker'
 
+Topic.destroy_all
+5.times do |t|
+  topic = Topic.new
+  topic.title = "Topic #{t}"
+  topic.save!
+end
+
 Blog.destroy_all
 10.times do |t|
   blog = Blog.new
   blog.title = "My blog #{t}"
   blog.body = Faker::Lorem.paragraph
+  blog.topic_id = Faker::Number.between(1, 4)
   blog.save!
 end
 
@@ -25,4 +33,12 @@ Portfolio.destroy_all
   portfolio.main_image = 'http://via.placeholder.com/600x400'
   portfolio.thumb_image = 'http://via.placeholder.com/350x200'
   portfolio.save!
+end
+
+Technology.destroy_all
+3.times do |t|
+  tech = Technology.new
+  tech.name = "Technolofy #{t}"
+  tech.portfolio_id = Faker::Number.between(1, 9)
+  tech.save!
 end
