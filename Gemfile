@@ -5,6 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'bootstrap', '~> 4.0.0.beta'
 gem 'devise'
 gem 'friendly_id', '~> 5.1.0'
 gem 'mysql2', '>= 0.3.18', '< 0.5'
@@ -15,6 +16,7 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
+gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 
 group :development, :test do
